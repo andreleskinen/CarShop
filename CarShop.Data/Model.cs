@@ -1,11 +1,8 @@
-﻿using System;
-namespace CarShop.Data
+﻿namespace CarShop.Data;
+
+public class Model
 {
-    public class Model
-    {
-        public Model()
-        {
-        }
-    }
+    public int ModelId { get; set; }
+    public string ModelName { get; set; }
 }
 

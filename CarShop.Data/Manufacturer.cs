@@ -1,11 +1,8 @@
-﻿using System;
-namespace CarShop.Data
+﻿namespace CarShop.Data;
+
+public class Manufacturer
 {
-    public class Manufacturer
-    {
-        public Manufacturer()
-        {
-        }
-    }
+    public int ManufacturerId { get; set; }
+    public string ManufacturerName { get; set; }
 }
 

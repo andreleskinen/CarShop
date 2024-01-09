@@ -1,11 +1,8 @@
-﻿using System;
-namespace CarShop.Data
+﻿namespace CarShop.Data;
+
+public class MileageOfCar
 {
-    public class MileageOfCar
-    {
-        public MileageOfCar()
-        {
-        }
-    }
+    public int MileageId { get; set; }
+    public int Mileage { get; set; }
 }
 

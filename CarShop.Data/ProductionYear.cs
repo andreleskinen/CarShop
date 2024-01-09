@@ -1,11 +1,8 @@
-﻿using System;
-namespace CarShop.Data
+﻿namespace CarShop.Data;
+
+public class ProductionYear
 {
-    public class ProductionYear
-    {
-        public ProductionYear()
-        {
-        }
-    }
+    public int ProductionYearId { get; set; }
+    public int Year { get; set; }
 }
 

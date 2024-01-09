@@ -1,11 +1,8 @@
-﻿using System;
-namespace CarShop.Data
+﻿namespace CarShop.Data;
+
+public class PriceOfCar
 {
-    public class PriceOfCar
-    {
-        public PriceOfCar()
-        {
-        }
-    }
+    public int PriceId { get; set; }
+    public int Price { get; set; }
 }
 

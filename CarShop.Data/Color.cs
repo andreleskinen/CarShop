@@ -1,11 +1,8 @@
-﻿using System;
-namespace CarShop.Data
+﻿namespace CarShop.Data;
+
+public class Color
 {
-    public class Color
-    {
-        public Color()
-        {
-        }
-    }
+    public int ColorId { get; set; }
+    public string ColorName { get; set; }
 }
 

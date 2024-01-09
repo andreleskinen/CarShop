@@ -1,11 +1,8 @@
-﻿using System;
-namespace CarShop.Data
+﻿namespace CarShop.Data;
+
+public class Brand
 {
-    public class Brand
-    {
-        public Brand()
-        {
-        }
-    }
+    public int BrandId { get; set; }
+    public string BrandName { get; set; }
 }
 
