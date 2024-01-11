@@ -1,6 +1,8 @@
-﻿namespace CarShop.Data;
+﻿
 
-public class Car
+namespace CarShop.Data.Entities;
+
+public class Car : IEntity
 {
     public int CarId { get; set; }
     public Color Color { get; set; }
