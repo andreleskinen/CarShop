@@ -2,9 +2,9 @@
 
 namespace CarShop.Data.Entities;
 
-public class PriceOfCar : IEntity
+public class Price : IEntity
 {
     public int PriceId { get; set; }
-    public int Price { get; set; }
+    public int PriceOfCar { get; set; }
 }
 
