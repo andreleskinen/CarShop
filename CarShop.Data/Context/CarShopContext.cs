@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace CarShop.Data.Context;
 
-public class CarShopContext : DbContext
+public class CarShopContext(DbContextOptions<CarShopContext> builder) : DbContext(builder)
 {
     public DbSet<Brand> Brands => Set<Brand>();
     public DbSet<Filter> Filters => Set<Filter>();
