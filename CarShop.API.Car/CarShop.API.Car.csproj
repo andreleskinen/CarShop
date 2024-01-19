@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CarShop.API.DTO\CarShop.API.DTO.csproj" />
+    <ProjectReference Include="..\CarShop.API.Extensions\CarShop.API.Extensions.csproj" />
     <ProjectReference Include="..\CarShop.Data.Shared\CarShop.Data.Shared.csproj" />
     <ProjectReference Include="..\CarShop.Data\CarShop.Data.csproj" />
   </ItemGroup>

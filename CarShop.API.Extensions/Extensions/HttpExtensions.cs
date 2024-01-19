@@ -1,4 +1,4 @@
-﻿namespace CarShop.API.Extensions.Extensions;
+﻿namespace CarShop.API.Extensions;
 
 public static class HttpExtensions
 {

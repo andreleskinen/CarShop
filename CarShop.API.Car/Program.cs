@@ -22,5 +22,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+RegisterEndpoints(app);
+
 app.Run();
+
+void RegisterEndpoints(WebApplication app)
+{
+    app.AddEndpoint<Car, CarPostDTO, CarPutDTO, CarGetDTO>();
+}
 
