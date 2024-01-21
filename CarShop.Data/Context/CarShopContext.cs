@@ -1,7 +1,4 @@
-﻿using CarShop.Data.Entities;
-using Microsoft.EntityFrameworkCore;
-using System.Drawing;
-
+﻿
 namespace CarShop.Data.Context;
 
 public class CarShopContext(DbContextOptions<CarShopContext> builder) : DbContext(builder)

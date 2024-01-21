@@ -1,3 +1,6 @@
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,6 +14,17 @@ builder.Services.AddDbContext<CarShopContext>(
         options.UseSqlServer(
             builder.Configuration.GetConnectionString("CarShopConnection")));
 
+builder.Services.AddCors(policy =>
+{
+    policy.AddPolicy("CorsAllAccessPolicy", opt =>
+        opt.AllowAnyOrigin()
+           .AllowAnyHeader()
+           .AllowAnyMethod()
+    );
+});
+
+RegisterServices();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,12 +36,34 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-RegisterEndpoints(app);
+RegisterEndpoints();
+
+app.UseCors("CorsAllAccessPolicy");
 
 app.Run();
 
-void RegisterEndpoints(WebApplication app)
+void RegisterEndpoints()
 {
     app.AddEndpoint<Car, CarPostDTO, CarPutDTO, CarGetDTO>();
+}
+void RegisterServices()
+{
+    ConfigureAutoMapper();
+    builder.Services.AddScoped<IDbService, CarDbService>();
+}
+void ConfigureAutoMapper()
+{
+    var config = new MapperConfiguration(cfg =>
+    {
+        cfg.CreateMap<Car, CarPostDTO>().ReverseMap();
+        cfg.CreateMap<Car, CarPutDTO>().ReverseMap();
+        cfg.CreateMap<Car, CarGetDTO>().ReverseMap();
+        cfg.CreateMap<Car, CarSmallGetDTO>().ReverseMap();
+        /*cfg.CreateMap<Filter, FilterGetDTO>().ReverseMap();
+        cfg.CreateMap<Size, OptionDTO>().ReverseMap();
+        cfg.CreateMap<Color, OptionDTO>().ReverseMap();*/
+    });
+    var mapper = config.CreateMapper();
+    builder.Services.AddSingleton(mapper);
 }
 

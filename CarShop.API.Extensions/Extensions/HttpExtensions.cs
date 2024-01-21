@@ -1,4 +1,5 @@
-﻿namespace CarShop.API.Extensions;
+﻿
+namespace CarShop.API.Extensions;
 
 public static class HttpExtensions
 {
@@ -16,9 +17,8 @@ public static class HttpExtensions
         app.MapPut($"/api/{node}s/" + "{id}", HttpPutAsync<TEntity, TPutDto>);
         app.MapDelete($"/api/{node}s/" + "{id}", HttpDeleteAsync<TEntity>);*/
     }
-    
-    public static async Task<IResult> HttpGetAsync<TEntity, TDto>()
-    where TEntity : class 
-    where TDto : class =>
-        Results.Ok();
+
+    public static async Task<IResult> HttpGetAsync<TEntity, TDto>(this IDbService db)
+    where TEntity : class where TDto : class =>
+        Results.Ok(await db.GetAsync<TEntity, TDto>());
 }
