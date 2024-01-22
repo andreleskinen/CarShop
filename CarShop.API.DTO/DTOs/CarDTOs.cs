@@ -1,7 +1,5 @@
 ﻿namespace CarShop.API.DTO;
 
-public class CarDTOs
-{
     public class CarPostDTO
     {
         public string Name { get; set; } = string.Empty;
@@ -18,4 +16,4 @@ public class CarDTOs
     public class CarSmallGetDTO : CarPutDTO
     {
     }
-}
+
