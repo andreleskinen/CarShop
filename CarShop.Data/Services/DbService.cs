@@ -1,6 +1,4 @@
-﻿
-
-namespace CarShop.Data.Services;
+﻿namespace CarShop.Data.Services;
 
 public class DbService : IDbService
 {
@@ -12,6 +10,7 @@ public class DbService : IDbService
         _db = db;
         _mapper = mapper;
     }
+
     public virtual async Task<List<TDto>> GetAsync<TEntity, TDto>()
         where TEntity : class
         where TDto : class
@@ -19,5 +18,11 @@ public class DbService : IDbService
         //IncludeNavigationsFor<TEntity>();
         var entities = await _db.Set<TEntity>().ToListAsync();
         return _mapper.Map<List<TDto>>(entities);
+    }
+
+    public virtual async Task<TDto> SingleAsync<TEntity, TDto>(int id) where TEntity : class, IEntity where TDto : class
+    {
+        var entity = await _db.Set<TEntity>().SingleOrDefaultAsync(e => e.Id == id);
+        return _mapper.Map<TDto>(entity);
     }
 }

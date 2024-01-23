@@ -12,7 +12,7 @@ namespace CarShop.Data.Migrations
 {
     [DbContext(typeof(CarShopContext))]
     [Migration("20240118165054_initialize")]
-    partial class initialize
+    partial class Initialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

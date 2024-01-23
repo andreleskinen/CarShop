@@ -1,6 +1,3 @@
-
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -59,9 +56,11 @@ void ConfigureAutoMapper()
         cfg.CreateMap<Car, CarPutDTO>().ReverseMap();
         cfg.CreateMap<Car, CarGetDTO>().ReverseMap();
         cfg.CreateMap<Car, CarSmallGetDTO>().ReverseMap();
-        /*cfg.CreateMap<Filter, FilterGetDTO>().ReverseMap();
+        /*
+        cfg.CreateMap<Filter, FilterGetDTO>().ReverseMap();
         cfg.CreateMap<Size, OptionDTO>().ReverseMap();
-        cfg.CreateMap<Color, OptionDTO>().ReverseMap();*/
+        cfg.CreateMap<Color, OptionDTO>().ReverseMap();
+        */
     });
     var mapper = config.CreateMapper();
     builder.Services.AddSingleton(mapper);

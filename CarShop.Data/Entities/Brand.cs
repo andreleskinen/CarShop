@@ -4,7 +4,7 @@ namespace CarShop.Data.Entities;
 
 public class Brand : IEntity
 {
-    public int BrandId { get; set; }
+    public int Id { get; set; }
     public string BrandName { get; set; }
     public List<Car> Cars { get; set; }
 
