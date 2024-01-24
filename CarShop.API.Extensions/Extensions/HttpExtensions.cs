@@ -30,4 +30,23 @@ public static class HttpExtensions
         if (result is null) return Results.NotFound();
         return Results.Ok(result);
     }
+
+    public static async Task<IResult> HttpPostAsync<TEntity, TPostDto>(this IDbService db, TPostDto dto)
+        where TEntity : class, IEntity where TPostDto : class
+    {
+        try
+        {
+            var entity = await db .AddAsync<TEntity, TPostDto>(dto);
+            if (await db.SaveChangesAsync())
+            {
+                var node = typeof(TEntity).Name.ToLower();
+                return Results.Created($"/{node}s/{entity.Id}", entity);
+            }
+        }
+        catch
+        {
+        }
+
+        return Result.BadRequest($"Couldn´t add the {typeof(TEntity).Name} entity.");
+    }
 }
