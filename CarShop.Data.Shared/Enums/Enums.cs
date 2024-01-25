@@ -2,5 +2,5 @@
 
 public enum OptionType
 {
-    CheckBox, RadioButton, Slider
+    All, NewCar, UsedCar, ElectricCar, HybridCar, SportCar
 }

@@ -10,6 +10,7 @@
 		<Compile Remove="Contexts\**" />
 		<EmbeddedResource Remove="Contexts\**" />
 		<None Remove="Contexts\**" />
+		<None Remove="Entities\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -26,4 +27,7 @@
 		<ProjectReference Include="..\CarShop.Data.Shared\CarShop.Data.Shared.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Entities\" />
+	</ItemGroup>
 </Project>

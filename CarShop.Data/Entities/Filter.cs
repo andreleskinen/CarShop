@@ -1,4 +1,5 @@
-﻿namespace CarShop.Data.Entities;
+﻿using System;
+namespace CarShop.Data.Entities;
 
 public class Filter : IEntity
 {
@@ -9,3 +10,4 @@ public class Filter : IEntity
     public List<Car> Cars { get; set; }
 
 }
+
