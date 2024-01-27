@@ -1,4 +1,6 @@
-﻿namespace CarShop.API.Extensions;
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace CarShop.API.Extensions;
 
 public static class HttpExtensions
 {
@@ -10,13 +12,35 @@ public static class HttpExtensions
 
     {
         var node = typeof(TEntity).Name.ToLower();
-        //app.MapGet($"/api/{node}s/" + "{id}", HttpSingleAsync<TEntity, TGetDto>);
+        app.MapGet($"/api/{node}s/" + "{id}", HttpSingleAsync<TEntity, TGetDto>);
         app.MapGet($"/api/{node}s", HttpGetAsync<TEntity, TGetDto>);
-        //app.MapPost($"/api/{node}s", HttpPostAsync<TEntity, TPostDto>);
-        /*
+        app.MapPost($"/api/{node}s", HttpPostAsync<TEntity, TPostDto>);
         app.MapPut($"/api/{node}s/" + "{id}", HttpPutAsync<TEntity, TPutDto>);
         app.MapDelete($"/api/{node}s/" + "{id}", HttpDeleteAsync<TEntity>);
-        */
+        
+    }
+
+    public static void AddEndpoint<TEntity, TDto>(this WebApplication app)
+    where TEntity : class where TDto : class
+    {
+        var node = typeof(TEntity).Name.ToLower();
+        app.MapPost($"/api/{node}s", HttpPostReferenceAsync<TEntity, TDto>);
+
+        app.MapDelete($"/api/{node}s", async (IDbService db, [FromBody] TDto dto) =>
+        {
+            try
+            {
+                if (!db.Delete<TEntity, TDto>(dto)) return Results.NotFound();
+
+                if (await db.SaveChangesAsync()) return Results.NoContent();
+            }
+            catch
+            {
+            }
+
+            return Results.BadRequest($"Couldn't delete the {typeof(TEntity).Name} entity.");
+        });
+
     }
 
     public static async Task<IResult> HttpGetAsync<TEntity, TDto>(this IDbService db)
@@ -47,6 +71,40 @@ public static class HttpExtensions
         {
         }
 
-        return Result.BadRequest($"Couldn´t add the {typeof(TEntity).Name} entity.");
+        return Results.BadRequest($"Couldn´t add the {typeof(TEntity).Name} entity.");
     }
+
+    public static async Task<IResult> HttpPutAsync<TEntity, TPutDto>(this IDbService db, TPutDto dto)
+    where TEntity : class, IEntity where TPutDto : class
+    {
+        try
+        {
+            db.Update<TEntity, TPutDto>(dto);
+            if (await db.SaveChangesAsync()) return Results.NoContent();
+        }
+        catch
+        {
+        }
+
+        return Results.BadRequest($"Couldn't update the {typeof(TEntity).Name} entity.");
+    }
+
+    public static async Task<IResult> HttpDeleteAsync<TEntity>(this IDbService db, int id)
+    where TEntity : class, IEntity
+    {
+        try
+        {
+            if (!await db.DeleteAsync<TEntity>(id)) return Results.NotFound();
+
+            if (await db.SaveChangesAsync()) return Results.NoContent();
+        }
+        catch
+        {
+        }
+
+        return Results.BadRequest($"Couldn't delete the {typeof(TEntity).Name} entity.");
+    }
+
+
+
 }

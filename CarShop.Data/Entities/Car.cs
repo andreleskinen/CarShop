@@ -16,5 +16,6 @@ public class Car : IEntity
     public Mileage Mileage { get; set; }
     public Model Model { get; set; }
     public OptionType OptionTypes { get; set; }
+    public List<Filter>? Filters { get; set; }
 }
 

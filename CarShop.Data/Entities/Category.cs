@@ -3,7 +3,7 @@ namespace CarShop.Data.Entities;
 
 public class Category : IEntity
 {
-    public int CategoryId { get; set; }
+    public int CatergoryId { get; set; }
     public string Name { get; set; }
 
     public List<Car> Cars { get; set; }
