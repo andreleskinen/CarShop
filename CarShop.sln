@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop.API.Extensions", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop.API.DTO", "CarShop.API.DTO\CarShop.API.DTO.csproj", "{C35622B9-B311-4492-A153-86BC19B07405}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShop.UI", "CarShop.UI\CarShop.UI.csproj", "{2E079537-E08E-4765-985F-481559DEB4C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C35622B9-B311-4492-A153-86BC19B07405}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C35622B9-B311-4492-A153-86BC19B07405}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C35622B9-B311-4492-A153-86BC19B07405}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E079537-E08E-4765-985F-481559DEB4C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E079537-E08E-4765-985F-481559DEB4C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E079537-E08E-4765-985F-481559DEB4C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E079537-E08E-4765-985F-481559DEB4C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
