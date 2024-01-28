@@ -41,7 +41,20 @@ app.Run();
 
 void RegisterEndpoints()
 {
+    //app.AddEndpoint<ProductCategory, ProductCategoryDTO>();        //Måste skapa en entitet som heter ProductCategory
     app.AddEndpoint<Car, CarPostDTO, CarPutDTO, CarGetDTO>();
+    /*app.MapGet($"/api/categorieswithdata", async (IDbService db) =>
+    {
+        try
+        {
+            return Results.Ok(await ((CarDbService)db).GetCategoriesWithAllRelatedDataAsync());
+        }
+        catch
+        {
+        }
+
+        return Results.BadRequest($"Couldn't get the requested products of type {typeof(Product).Name}.");
+    });*/
 }
 void RegisterServices()
 {
@@ -56,6 +69,7 @@ void ConfigureAutoMapper()
         cfg.CreateMap<Car, CarPutDTO>().ReverseMap();
         cfg.CreateMap<Car, CarGetDTO>().ReverseMap();
         cfg.CreateMap<Car, CarSmallGetDTO>().ReverseMap();
+        cfg.CreateMap<ProductCategory, ProductCategoryDTO>().ReverseMap(); //Måste skapa en entitet som heter ProductCategory
         /*
         cfg.CreateMap<Filter, FilterGetDTO>().ReverseMap();
         cfg.CreateMap<Size, OptionDTO>().ReverseMap();

@@ -42,6 +42,24 @@ public static class HttpExtensions
         });
 
     }
+    public static async Task<IResult> HttpPostReferenceAsync<TEntity, TPostDto>(this IDbService db, TPostDto dto)
+    where TEntity : class where TPostDto : class
+    {
+        try
+        {
+            var entity = await db.AddAsync<TEntity, TPostDto>(dto);
+            if (await db.SaveChangesAsync())
+            {
+                var node = typeof(TEntity).Name.ToLower();
+                return Results.Created($"/{node}s/", entity);
+            }
+        }
+        catch
+        {
+        }
+
+        return Results.BadRequest($"Couldn't add the {typeof(TEntity).Name} entity.");
+    }
 
     public static async Task<IResult> HttpGetAsync<TEntity, TDto>(this IDbService db)
     where TEntity : class where TDto : class =>
@@ -104,6 +122,8 @@ public static class HttpExtensions
 
         return Results.BadRequest($"Couldn't delete the {typeof(TEntity).Name} entity.");
     }
+
+
 
 
 
