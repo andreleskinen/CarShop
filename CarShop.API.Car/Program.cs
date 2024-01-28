@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// SQL Server Service Registration
+// SQL Server Service Registration 
 builder.Services.AddDbContext<CarShopContext>(
     options =>
         options.UseSqlServer(
