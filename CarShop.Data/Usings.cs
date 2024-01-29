@@ -4,3 +4,5 @@ global using CarShop.Data.Entities;
 global using Microsoft.EntityFrameworkCore;
 global using AutoMapper;
 global using CarShop.Data.Context;
+global using CarShop.API.DTO;
+

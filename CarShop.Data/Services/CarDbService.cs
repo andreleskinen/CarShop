@@ -1,9 +1,4 @@
-﻿
-
-
-using CarShop.API.DTO;
-
-namespace CarShop.Data.Services;
+﻿namespace CarShop.Data.Services;
 
 public class CarDbService(CarShopContext db, IMapper mapper) : DbService(db, mapper)
 {
